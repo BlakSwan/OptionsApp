@@ -1,0 +1,17 @@
+# Ignore CSV files
+*.csv
+
+# Ignore all files in the 'data' directory
+/data/*
+
+# Ignore backup files created by text editors
+*~
+
+# Ignore Jupyter Notebook files
+*.ipynb
+
+# Ignore configuration files
+config.py
+
+# Ignore code testing files
+tsla_data.py 
