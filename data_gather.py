@@ -14,7 +14,7 @@ def get_option_chain(ticker):
     return df
 
 
-def run_script(symbol):
+def get_data(symbol):
     # Define the start and end times for the API calls
     start_time = time(9, 30)
     end_time = time(19, 0)
@@ -51,8 +51,7 @@ def run_script(symbol):
                 df_tracker.to_csv(output_file, index=False)
             os.system(
             "osascript sendMessage.applescript {} {}"
-                .format(config.phone_number, "Apple"))
-            print('Done for the day')
+                .format(config.phone_number, symbol + " is done for the day!"))
             break
         
         # Wait 5 minutes before making the next API call
