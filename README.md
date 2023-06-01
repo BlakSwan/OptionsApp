@@ -23,11 +23,11 @@ To get started with this project, follow these steps:
 
 ## Contributing
 
-If you would like to contribute to this project, please [provide instructions for how to do so].
+If you would like to contribute to this project, please contact me through Github.
 
 ## Contact
 
-If you have any questions about this project, please [provide contact information or instructions].
+If you have any questions about this project, please contact me through Github.
 
 ## License
 

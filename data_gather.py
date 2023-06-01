@@ -26,6 +26,7 @@ def run_script(symbol):
         if current_time >= start_time and current_time <= end_time:
             # Make the API call 
             df = get_option_chain(symbol)
+            print(f'Pulling {symbol} at {current_time}')
             # Remove the multi-index
             df = df.reset_index(drop=True)
             # Filter the data frame to include only calls
@@ -39,7 +40,7 @@ def run_script(symbol):
             today = datetime.today().strftime('%Y-%m-%d')
             # Define the output file name and directory
             output_file = symbol + 'option_chain' + today + datetime.now().strftime('%H') + '.csv'
-            directory = f'data/{symbol}'
+            directory = f'data/{symbol}/'
             #Output to csv every hour
             if count % 12 == 0:
                 df_tracker.to_csv(directory + output_file, index=False)
