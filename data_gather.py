@@ -20,13 +20,13 @@ def get_data(symbol):
     end_time = time(19, 0)
     count = 0
     df_tracker = pd.DataFrame()
+    print(f'Pulling {symbol} at {current_time}')
     while True:
         # Check if the current time is within market hours
         current_time = datetime.now().time()
         if current_time >= start_time and current_time <= end_time:
             # Make the API call 
             df = get_option_chain(symbol)
-            print(f'Pulling {symbol} at {current_time}')
             # Remove the multi-index
             df = df.reset_index(drop=True)
             # Filter the data frame to include only calls
@@ -51,7 +51,7 @@ def get_data(symbol):
                 df_tracker.to_csv(output_file, index=False)
             os.system(
             "osascript sendMessage.applescript {} {}"
-                .format(config.phone_number, symbol + " is done for the day!"))
+                .format(config.phone_number, "Done for the day!"))
             break
         
         # Wait 5 minutes before making the next API call

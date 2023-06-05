@@ -28,12 +28,12 @@ if __name__ == '__main__':
             process.join()
 
     # # Schedule the script to run every weekday at 9:30 AM
-    # schedule.every().day.at("09:30").do(run_script)
+    schedule.every().day.at("09:30").do(run_script)
 
-    # while True:
-    #     schedule.run_pending()
-    #     time.sleep(100)
+    while True:
+        schedule.run_pending()
+        time.sleep(100)
 
 # Run the script manually
-    run_script()
+    # run_script()
 

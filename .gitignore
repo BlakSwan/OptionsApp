@@ -17,3 +17,6 @@ config.py
 # Ignore code testing files
 tsla_data.py 
 manual_start.py
+
+# Ignore pickle files
+*.pkl
