@@ -1,8 +1,9 @@
 # Ignore CSV files
 *.csv
 
-# Ignore all files in the 'data' directory
+# Ignore all files in the 'data' and pycache directories
 /data/*
+/_pycache_/*
 
 # Ignore backup files created by text editors
 *~
@@ -18,5 +19,8 @@ config.py
 tsla_data.py 
 manual_start.py
 
-# Ignore pickle files
+# Ignore random files
 *.pkl
+*.xlsx
+OptionsApp.code-workspace
+

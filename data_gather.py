@@ -17,10 +17,9 @@ def get_option_chain(ticker):
 def get_data(symbol):
     # Define the start and end times for the API calls
     start_time = time(9, 30)
-    end_time = time(19, 0)
+    end_time = time(16, 00)
     count = 0
     df_tracker = pd.DataFrame()
-    print(f'Pulling {symbol} at {current_time}')
     while True:
         # Check if the current time is within market hours
         current_time = datetime.now().time()
@@ -40,18 +39,17 @@ def get_data(symbol):
             today = datetime.today().strftime('%Y-%m-%d')
             # Define the output file name and directory
             output_file = symbol + 'option_chain' + today + datetime.now().strftime('%H') + '.csv'
-            directory = f'data/{symbol}/'
+            directory = f'/Volumes/External Drive/data/{symbol}/'
             #Output to csv every hour
             if count % 12 == 0:
                 df_tracker.to_csv(directory + output_file, index=False)
                 df_tracker = pd.DataFrame()
         #Output to csv at the end of the day and send a text message
-        if current_time >= end_time:
+        elif current_time >= end_time:
+            done_message = f"Done{symbol}!"
             if len(df_tracker) > 1:
-                df_tracker.to_csv(output_file, index=False)
-            os.system(
-            "osascript sendMessage.applescript {} {}"
-                .format(config.phone_number, "Done for the day!"))
+                df_tracker.to_csv(directory + output_file, index=False)
+            os.system(f"osascript sendMessage.applescript {config.phone_number} {done_message}")
             break
         
         # Wait 5 minutes before making the next API call

@@ -19,7 +19,7 @@ if __name__ == '__main__':
             process = multiprocessing.Process(target=data_gather.get_data, args=(symbol,))
             process.start()
             processes.append(process)
-            start_message = "Starting!"
+            start_message = f"Starting{symbol}!"
             os.system(
                 "osascript sendMessage.applescript {} {}".format(config.phone_number, start_message))
 
@@ -27,7 +27,7 @@ if __name__ == '__main__':
         for process in processes:
             process.join()
 
-    # # Schedule the script to run every weekday at 9:30 AM
+    # Schedule the script to run every weekday at 9:30 AM
     schedule.every().day.at("09:30").do(run_script)
 
     while True:
